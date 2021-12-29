@@ -1,6 +1,7 @@
 import base64
 import numpy as np
 import io
+import os
 from PIL import Image
 import tensorflow as tf
 from tensorflow import keras
@@ -47,5 +48,6 @@ def predict():
     }
     return jsonify(response)
 
+port = int(os.environ.get('PORT',8080))
 if __name__ == "__main__":
-   app.run(debug=True,host='0.0.0.0',port= 8080)
+   app.run(debug=True,host='0.0.0.0',port= port)

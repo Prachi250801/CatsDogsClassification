@@ -10,9 +10,9 @@ from keras.models import load_model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, img_to_array
 from flask import request
 from flask import jsonify
-from flask import Flask
+from flask import Flask,render_template
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder='static')
 
 def get_model():
     global model
@@ -29,6 +29,9 @@ def preprocess_image(image, target_size):
 
 print("* Loading Keras model...")
 get_model()
+@app.route("/", methods=["GET"])
+def index():
+    return render_template('predict.html')
 
 
 @app.route("/predict", methods=["POST"])

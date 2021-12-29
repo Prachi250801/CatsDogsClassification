@@ -40,7 +40,7 @@
                 image: base64Image
             }
             console.log(message);
-            $.post("/predict", JSON.stringify(message), function(response){
+            $.post("/predict ", JSON.stringify(message), function(response){
                 $("#dog-prediction").text(response.prediction.dog.toFixed(6));
                 $("#cat-prediction").text(response.prediction.cat.toFixed(6));
                 console.log(response);

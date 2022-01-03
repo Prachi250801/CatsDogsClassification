@@ -3,8 +3,6 @@ import numpy as np
 import io
 import os
 from PIL import Image
-from dotenv import load_dotenv
-from dotenv import dotenv_values
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Sequential, load_model
@@ -13,7 +11,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator, img_to_arra
 from flask import request
 from flask import jsonify
 from flask import Flask,render_template
-#config = dotenv_values(".env")
+
 
 '''
 config = {

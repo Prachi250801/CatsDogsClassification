@@ -3,6 +3,8 @@ import numpy as np
 import io
 import os
 from PIL import Image
+from dotenv import load_dotenv
+from dotenv import dotenv_values
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Sequential, load_model
@@ -11,8 +13,17 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator, img_to_arra
 from flask import request
 from flask import jsonify
 from flask import Flask,render_template
+#config = dotenv_values(".env")
 
-app = Flask(__name__,template_folder='static')
+'''
+config = {
+ **dotenv_values(".env.shared"),
+ **dotenv_values(".env.secret"),
+ **os.environ
+}
+'''
+
+app = Flask(__name__,template_folder='templates')
 
 def get_model():
     global model
@@ -37,6 +48,7 @@ def index():
 @app.route("/predict", methods=["POST"])
 def predict():
     message = request.get_json(force=True)
+    #print(message)
     encoded = message['image']
     decoded = base64.b64decode(encoded)
     image = Image.open(io.BytesIO(decoded))
@@ -51,6 +63,6 @@ def predict():
     }
     return jsonify(response)
 
-port = int(os.environ.get('PORT',8080))
+#port = int(os.environ.get('PORT',8080))
 if __name__ == "__main__":
-   app.run(debug=True,host='0.0.0.0',port= port)
+   app.run()

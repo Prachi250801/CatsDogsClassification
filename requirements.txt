@@ -46,3 +46,4 @@ charset-normalizer~=2.0.0
 zipp>=0.5
 pyasn1<0.5.0,>=0.4.6
 oauthlib>=3.0.0
+tf-nightly-2.9.0.dev20220103

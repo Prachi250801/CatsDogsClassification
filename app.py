@@ -25,7 +25,7 @@ app = Flask(__name__,template_folder='templates')
 
 def get_model():
     global model
-    model = load_model('VGG16_cats_and_dogs.h5')
+    model = load_model('cats_and_dogs.h5')
     print(" * Model loaded!")
 
 def preprocess_image(image, target_size):

@@ -2,6 +2,8 @@ import base64
 import numpy as np
 import io
 import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ["SM_FRAMEWORK"] = "tf.keras"
 from PIL import Image
 import tensorflow as tf
 from tensorflow import keras

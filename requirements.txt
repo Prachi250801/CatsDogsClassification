@@ -3,4 +3,5 @@ keras==2.7.0
 keras_nightly==2.5.0.dev2021032900
 numpy==1.19.5
 Pillow==9.0.0
+tensorflow==2.7.0
 tensorflow_cpu==2.6.0

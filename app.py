@@ -2,8 +2,6 @@ import base64
 import numpy as np
 import io
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-os.environ["SM_FRAMEWORK"] = "tf.keras"
 from PIL import Image
 import tensorflow as tf
 from tensorflow import keras
@@ -13,14 +11,11 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator, img_to_arra
 from flask import request
 from flask import jsonify
 from flask import Flask,render_template
-
 app = Flask(__name__,template_folder='templates')
-
 def get_model():
     global model
     model = load_model('VGG16_cats_and_dogs.h5')
     print(" * Model loaded!")
-
 def preprocess_image(image, target_size):
     if image.mode != "RGB":
         image = image.convert("RGB")
